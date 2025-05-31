@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigiebone Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div>
+            
+            <img 
+             class="image-logo2" src="logo2.png" alt="my-logo">
+            </div>
+            <ul>
+                
+                <li>
+                    <a href="Home.html"><b> Home</b></a>
+                </li>
+                <li>
+                    <a href="Bracelet.html"> <b> Bracelet</b></a>
+                </li>
+                <li>
+                    <a href="Phonestrap.html"> <b> Phonestrap</b></a>
+                </li>
+            
+            
+            
+            </ul>
+        </nav>
+    
+        <div class="container">
+            <div class="products" id="product-list"></div>
+            <div class="cart">
+                <h2>Keranjang Belanja</h2>
+                <div id="cart-items">   
+                    <p>Keranjang kosong</p>
+                </div>
+            </div>
+        </div>
+        
+    
+    <script>
+        const product = [
+        {
+            id: "1",
+            name: "SeaStar Edition",
+            image: "https://i.pinimg.com/736x/e3/c3/7b/e3c37b0bbd2dc3bb49ac2ef6e715116e.jpg",
+            price:   12000
+        },
+        {
+            id: "2",
+            name: "Cherilady Bracelet",
+            image: "https://i.pinimg.com/736x/33/d3/87/33d387e2202737fcde39be8e71c8980b.jpg",
+            price: 7000
+        },
+        {
+            id: "3",
+            name: "Fluttershy Bracelet",
+            image: "https://i.pinimg.com/736x/78/ae/18/78ae18b52323aa8717a607a1ca6cf7c8.jpg",
+            price: 8000
+        },
+        {
+            id: "4",
+            name: "Butterfie Bracelet",
+            image: "https://i.pinimg.com/736x/92/49/4a/92494adb2f0073f2f97db04b370707d3.jpg",
+            price: 7000
+        },
+        {
+            id: "5",
+            name: "Lowkey Bracelet",
+            image: "https://i.pinimg.com/736x/54/6b/17/546b171ae743531eef8f10bff5ae6c23.jpg",
+            price: 7000  
+        },    
+        {
+            id: "6",
+            name: "Fairy  Bracelet",
+            image: "https://i.pinimg.com/736x/d0/09/ab/d009abf0168c7efa09aaa958a1445045.jpg",
+            price: 8000 
+        },    
+    ];
+    
+    var cart = [];
+    const divContainer = document.getElementById("product-list");
+    divContainer.innerText =""
+    
+    
+product.forEach(function(produk ){
+
+const divCard = document.createElement("div");
+divCard.className = "product-card";
+divCard.innerHTML = ` 
+                            <img src="${produk.image}">
+                            <h1>${produk.name}</h1>
+                            <p>Harga : Rp. ${produk.price.toLocaleString()}</p>
+                            <button onclick="tambahkeranjang(${produk.id})">Simpan Ke Keranjang</button>
+`
+
+divContainer.append(divCard)
+});
+
+function tambahkeranjang(id){
+    let product_yang_dipilih = product.find( product => product.id == id);
+    let produk ={
+
+     id: product_yang_dipilih.id,
+     name: product_yang_dipilih.name,
+     price: product_yang_dipilih.price,
+     quantity: 1
+    }
+let product_sudah_ada = cart.find( cart => cart.id == id)
+
+if(product_sudah_ada){
+     product_sudah_ada.quantity +=1;
+}else{
+     cart.push(produk);
+
+}
+
+
+console.log(cart); 
+let cart_items = document.getElementById("cart-items");
+
+cart_items.innerHTML = "";
+
+cart.forEach( (cart) => {
+     const div = document.createElement("div");
+
+     div.innerHTML = `
+        <b> ${cart.name} </b>
+        <p> ${cart.price.toLocaleString()} x ${cart.quantity} </p> 
+         Total : ${cart.price * cart.quantity.toLocaleString()}
+
+ `;
+
+     cart_items.append(div);
+});
+
+const buttonCheckout = document.createElement("button");
+buttonCheckout.innerText = "Checkout Via WhatsApp";
+
+cart_items.append(buttonCheckout);
+buttonCheckout.onclick = checkoutToWhatsapp;
+
+function checkoutToWhatsapp(){
+    let pesan ="Halo kak, saya mau beli ini:";
+    cart.forEach((produk) => {
+        pesan += `${produk.name} x ${produk.quantity}\n`;
+    });
+    window.open("https://wa.me/6285780827014?text=" + encodeURIComponent(pesan));
+}
+}
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.image-logo{
+    width: 100px 
+    
+}
+.image-logo2{
+    width: 300px;
+}
+.navbar{
+    background: linear-gradient(to bottom, #f8677f, #fffffe);
+    width: 100%;
+    height: 100px;
+    padding-top: 2px;
+     display: flex;
+     font-size: 20px;
+    
+
+     
+}
+.navbar ul{
+    display: flex;
+    text-align: center;
+    list-style: none;
+    gap: 20%;
+    margin-top: 20px;
+
+
+}
+.navbar ul li a{
+    text-decoration: none;
+    font-family: italic;
+    color: #e06c6c;
+    text-shadow: grey;
+    transition: all;
+    transition-duration: 300ms;
+    border-bottom: 5px solid #fef99b00 ;
+    
+    
+}
+.navbar ul li a:hover{
+    border-bottom: 1px solid #FEF99B ;
+}
+h1 {
+    color: #fbb7b7;
+    text-align: center;
+    font-family: italic;
+    text-shadow: black;
+}
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.cart {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    border : 1px solid black;
+}
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(190, 255, 180, 0.829);
+    text-align: center;
+}
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card .container-button{
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #fbb7b7;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+button:hover {
+    opacity: 0.5;
+}
+
+button:nth-child(1){
+    background-color: #6bff77;
+}
+button:nth-child(2){
+    background-color: #ff6b6b;
+}
+
+.button-pesan:active{
+    opacity: 1;
+    background-color: #b92727;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
